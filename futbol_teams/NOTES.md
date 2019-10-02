@@ -31,7 +31,7 @@ what will these team objects be composed of?
 
 1. a name
 2. a headline
-3. a a url
+3. a url
 
 
 

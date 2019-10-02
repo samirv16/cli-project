@@ -8,7 +8,7 @@ class FutbolTeams::CLI
   end
   
   def list_teams
-      @teams = FutbolTeams::Teams.headlines
+      @teams = FutbolTeams::Teams.all
   end
   
   def menu

@@ -1,8 +1,8 @@
 class FutbolTeams::Teams
   
   
-  def self.headlines
-    #should return a bunch of headlines
+  def self.all
+    #should return a bunch of teams
     
      puts <<-DOC.gsub /^\s*/, ""
       1. Real Madrid CF
