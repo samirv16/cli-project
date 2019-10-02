@@ -12,7 +12,7 @@ How to build a CLI Gem
 
 Lets build a line interface that offers news headlines of the 10 most popular teams in Europe (possibly a short paragraph from that article)
 
-List of futbol teams to learn about
+List of futbol teams to see headlines for 
 
 1. Real Madrid CF
 2. FC Barcelona 
@@ -26,6 +26,12 @@ List of futbol teams to learn about
 10. Manchester City
 
 Choose a futbol team 1..10
+
+what will these team objects be composed of?
+
+1. a name
+2. a headline
+3. a a url
 
 
 
