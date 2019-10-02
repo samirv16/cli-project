@@ -23,9 +23,10 @@ class FutbolTeams::CLI
   end
   
   def menu
-    puts "enter number for which team youd like to see news headlines or type exit to enter:"
     input = nil
     while input != "exit"
+    first_msg = "enter number for which team youd like to see news headlines, type list to see teams again, or type exit:"
+    puts first_msg
       input = gets.strip.downcase
       case input 
         when "1"
@@ -48,6 +49,10 @@ class FutbolTeams::CLI
         puts "news headlines for team 9"
         when "10"
         puts "news headlines for team 10"
+        when "list"
+          list_teams
+        else 
+          puts "That's not an option, please try again."
       end
     end 
   end 
