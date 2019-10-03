@@ -28,7 +28,7 @@ class FutbolTeams::CLI
       elsif input == "list"
         list_teams
       else
-        puts "That's not an option, please try again."
+        puts "That's not an option, please try again:"
       # case input 
       #   when "1"
       #   puts "news headlines for team 1"
