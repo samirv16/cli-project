@@ -3,8 +3,6 @@ require 'pry'
 class FutbolTeams::CLI
   
   def call
-    test = 'test'
-    binding.pry
     puts "News headlines available for the following 10 futbol teams:"
     list_teams
     menu
