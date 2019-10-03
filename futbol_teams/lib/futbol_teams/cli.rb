@@ -23,7 +23,8 @@ class FutbolTeams::CLI
       input = gets.strip.downcase
       
       if input.to_i > 0 
-        puts @teams[input.to_i-1].headlines
+        the_team = @teams[input.to_i-1]
+        puts the_team.headlines
       elsif input == "list"
         list_teams
       else
