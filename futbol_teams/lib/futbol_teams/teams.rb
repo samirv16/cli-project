@@ -1,14 +1,16 @@
+require 'pry'
+
 class FutbolTeams::Teams
     attr_accessor :name, :headlines, :scores, :url
   
+  # def self.all
+  #   #should return a bunch of teams
+  #   self.scrape_teams
+  # end
+      
+      
   def self.all
-    #should return a bunch of teams
-    self.scrape_teams
-  end
-      
-      
-  def self.scrape_teams
-    teams = []
+    # teams = []
     
     
       team_1 =  self.new 
