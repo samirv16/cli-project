@@ -3,20 +3,14 @@ class FutbolTeams::Teams
   
   def self.all
     #should return a bunch of teams
-    
-    # puts <<-DOC.gsub /^\s*/, ""
-    #   1. Real Madrid CF
-    #   2. FC Barcelona 
-    #   3. Manchester United
-    #   4. Chelsea FC
-    #   5. Bayern Munich
-    #   6. Arsenal FC 
-    #   7. PSG
-    #   8. Juventus
-    #   9. Liverpool FC
-    #   10. Manchester City
-    #   DOC
+    self.scrape_teams
+  end
       
+      
+  def self.scrape_teams
+    teams = []
+    
+    
       team_1 =  self.new 
       team_1.name = "Real Madrid CF"
       team_1.headlines = [
