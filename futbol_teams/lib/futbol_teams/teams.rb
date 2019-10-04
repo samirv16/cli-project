@@ -4,10 +4,13 @@ require 'open-uri'
 
 class FutbolTeams::Teams
     attr_accessor :name, :headlines, :scores, :url
+    
+    @doc = Nokogiri::HTML(open("https://howtheyplay.com/team-sports/Top-10-Best-Football-Teams-Of-All-Time"))
   
   def self.all
     #should return a bunch of teams
     self.scrape_team_names
+    self.scrape_team_description
   end
       
       
@@ -133,9 +136,8 @@ class FutbolTeams::Teams
   # end
   
   def self.scrape_team_names
-    doc = Nokogiri::HTML(open("https://howtheyplay.com/team-sports/Top-10-Best-Football-Teams-Of-All-Time"))
     
-    team_list = doc.css(".full.module.moduleText .subtitle").text
+    team_list = @doc.css(".full.module.moduleText .subtitle").text
     test1 = team_list.split("?")
     test1.shift
     test2 = test1.shift
@@ -147,13 +149,12 @@ class FutbolTeams::Teams
     test8 = test7.shift
     test5 << test8
     
-    # binding.pry
   end
   
-  # def self.scrape_team_description
+  def self.scrape_team_description
     
-    
-    
-  # end 
+    description_list =  @doc.css("#txtd_22027317 p").text
+    binding.pry
+  end 
 
 end 
