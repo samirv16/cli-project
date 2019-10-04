@@ -7,14 +7,14 @@ class FutbolTeams::Teams
   
   def self.all
     #should return a bunch of teams
-    self.scrape_teams
+    self.scrape_team_names
   end
       
       
-  def self.scrape_teams
-    teams = []
+  # def self.scrape_teams
+    # teams = []
     
-    teams << self.scrape_team_names
+    # teams << self.scrape_team_names
     
       # team_1 =  self.new 
       # team_1.name = "Real Madrid CF"
@@ -129,16 +129,31 @@ class FutbolTeams::Teams
       
       # [team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8, team_9, team_10]
       
-      teams
-  end
+      # teams
+  # end
   
   def self.scrape_team_names
     doc = Nokogiri::HTML(open("https://howtheyplay.com/team-sports/Top-10-Best-Football-Teams-Of-All-Time"))
     
     team_list = doc.css(".full.module.moduleText .subtitle").text
-    binding.pry
-    # test1 = team_list.split("?")
-    # test2 = test.shift
+    test1 = team_list.split("?")
+    test1.shift
+    test2 = test1.shift
+    test3 = test2.split(/\d\./).drop(1)
+    test4 = test3.each { |team| puts "#{team}" }
+    test5 = test4.shift(9)
+    test6 = test4.pop
+    test7 = test6.split("A")
+    test8 = test7.shift
+    test5 << test8
+    
+    # binding.pry
   end
+  
+  # def self.scrape_team_description
+    
+    
+    
+  # end 
 
 end 

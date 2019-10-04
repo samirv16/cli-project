@@ -13,7 +13,7 @@ class FutbolTeams::CLI
     # puts "10 most popular futbol teams:"
       @teams = FutbolTeams::Teams.all
       @teams.each.with_index(1) do |team, i|
-        puts "#{i}. #{team.name}"
+        puts "#{i}. #{team}"
       end
   end
   
