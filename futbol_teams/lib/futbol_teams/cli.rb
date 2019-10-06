@@ -24,8 +24,10 @@ class FutbolTeams::CLI
     puts first_msg
       input = gets.strip.downcase
       
+      @description = FutbolTeams::Teams.scrape_tream_desc
+      
       if input.to_i > 0 
-        the_team = @teams[input.to_i-1]
+        the_team = @description[input.to_i-1]
         puts the_team
       elsif input == "list"
         list_teams
