@@ -13,7 +13,7 @@ class FutbolTeams::CLI
     # puts "10 most popular futbol teams:"
       @teams = FutbolTeams::Teams.all
       @teams.each.with_index(1) do |team, i|
-        puts "#{i}. #{team}"
+       puts "#{i}. #{team}"
       end
   end
   
@@ -26,7 +26,7 @@ class FutbolTeams::CLI
       
       if input.to_i > 0 
         the_team = @teams[input.to_i-1]
-        puts the_team.headlines
+        puts the_team
       elsif input == "list"
         list_teams
       else

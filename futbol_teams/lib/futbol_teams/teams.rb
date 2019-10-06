@@ -3,21 +3,21 @@ require 'nokogiri'
 require 'open-uri'
 
 class FutbolTeams::Teams
-    attr_accessor :name, :headlines, :scores, :url
+    attr_accessor :name, :description, :scores, :url
     
     @doc = Nokogiri::HTML(open("https://howtheyplay.com/team-sports/Top-10-Best-Football-Teams-Of-All-Time"))
   
   def self.all
     #should return a bunch of teams
     self.scrape_team_names
-    self.scrape_team_description
   end
       
       
   # def self.scrape_teams
-    # teams = []
-    
-    # teams << self.scrape_team_names
+    # @descriptions = []
+    # @descriptions << self.scrape_tream1_desc
+     
+    # @descriptions
     
       # team_1 =  self.new 
       # team_1.name = "Real Madrid CF"
@@ -138,23 +138,27 @@ class FutbolTeams::Teams
   def self.scrape_team_names
     
     team_list = @doc.css(".full.module.moduleText .subtitle").text
-    test1 = team_list.split("?")
-    test1.shift
-    test2 = test1.shift
-    test3 = test2.split(/\d\./).drop(1)
-    test4 = test3.each { |team| puts "#{team}" }
-    test5 = test4.shift(9)
-    test6 = test4.pop
-    test7 = test6.split("A")
-    test8 = test7.shift
-    test5 << test8
+    test1 = team_list.split("?").pop
+    test2 = test1.split(/\d\./).drop(1)
+    test3 = test2.shift(9)
+    test4 = test2.pop
+    test5 = test4.split("A")
+    test6 = test5.shift
+    test3 << test6
+  end
+     
+     
+  def self.scrape_tream_desc
+    descs = []
+    
+    descs << @doc.css("#txtd_22027337 p").text
+    
+    descs << @doc.css("#txtd_22027334 p").text
+    # desc3 = @doc.css("#txtd_22027332 p").text
+    # binding.pry
     
   end
   
-  def self.scrape_team_description
-    
-    description_list =  @doc.css("#txtd_22027317 p").text
-    binding.pry
-  end 
+  
 
 end 
