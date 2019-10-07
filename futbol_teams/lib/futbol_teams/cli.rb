@@ -30,12 +30,15 @@ class FutbolTeams::CLI
       if input.to_i > 0 
         the_team = @description[input.to_i-1]
         puts the_team
+        puts ""
       elsif input == "list"
         list_teams
+        puts ""
         elsif input == "exit"
           puts ""
       else
         puts "That's not an option, please type 'list' to see teams again, or try again:"
+        puts ""
       end
     end 
   end 

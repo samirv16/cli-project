@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class FutbolTeams::Teams
-    attr_accessor :name, :url
+    
     
     @doc = Nokogiri::HTML(open("https://howtheyplay.com/team-sports/Top-10-Best-Football-Teams-Of-All-Time"))
   
@@ -23,6 +23,7 @@ class FutbolTeams::Teams
     test5 = test4.split("A")
     test6 = test5.shift
     test3 << test6
+    # binding.pry
   end
      
      
