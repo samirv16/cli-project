@@ -39,7 +39,7 @@ class FutbolTeams::Teams
     descs << @doc.css("#txtd_22027332 p").text #Barcelona (2009)
     descs << @doc.css("#txtd_22027334 p").text #Brazil (1970)
     descs << @doc.css("#txtd_22027337 p").text #Spain
-    # binding.pry
+    
     
   end
   

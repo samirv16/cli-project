@@ -14,6 +14,7 @@ class FutbolTeams::CLI
       @teams = FutbolTeams::Teams.all
       @teams.each.with_index(1) do |team, i|
        puts "#{i}. #{team}"
+       puts ""
       end
   end
   
@@ -31,8 +32,10 @@ class FutbolTeams::CLI
         puts the_team
       elsif input == "list"
         list_teams
+        elsif input == "exit"
+          puts ""
       else
-        puts "That's not an option, please type 'list' to see teamas again, or try again:"
+        puts "That's not an option, please type 'list' to see teams again, or try again:"
       end
     end 
   end 
