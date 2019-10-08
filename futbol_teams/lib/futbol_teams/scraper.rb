@@ -9,23 +9,24 @@ class Scraper
   def self.scrape_team_names
     doc = Nokogiri::HTML(open(BASE_URL))
     
-    team_info = doc.css("#hub_resp_main .full.module.moduleText")[1..10]
-    team_info.collect do |element| 
+    @team_info = doc.css("#hub_resp_main .full.module.moduleText")[1..10]
+    @team_info.collect do |element| 
       
         name = element.css("h2").text
-        Team.new(name)
+        url = BASE_URL
+        Team.new(name, url)
     end
-  binding.pry
   end
   
-  # def self.scrape_site
-  #   doc = Nokogiri::HTML(open("https://howtheyplay.com/team-sports/Top-10-Best-Football-Teams-Of-All-Time"))
+  # def self.scrape_description
+  #   doc = Nokogiri::HTML(open(BASE_URL))
     
-  #   team_info = doc.css("#hub_resp_main .full.module.moduleText")[1..10]
-  #   team_info.collect do |element| 
+  #   @team_info.collect do |element| 
       
-  #     description: element.css("p").text
+  #     team.description = element.css("p").text
+      
   #   end
   # end
+  binding.pry
 
 end
