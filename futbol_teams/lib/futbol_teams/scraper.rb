@@ -16,7 +16,9 @@ class Scraper
         url = BASE_URL
         Team.new(name, url)
     end
+    
   end
+  binding.pry
   
   # def self.scrape_description
   #   doc = Nokogiri::HTML(open(BASE_URL))
@@ -27,6 +29,5 @@ class Scraper
       
   #   end
   # end
-  binding.pry
 
 end
