@@ -6,14 +6,12 @@ class Team
     
     @@all = []
     
-    attr_accessor :description, :url
-    attr_reader :name 
+    attr_accessor :name, :description
     
-    def initialize(name, url)
+    def initialize(name, description)
       @name = name
-      @url = url
+      @description = description 
       @@all << self
-      @description = nil 
     end 
     
   
