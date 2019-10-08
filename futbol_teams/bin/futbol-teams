@@ -4,4 +4,4 @@
 require "./lib/futbol_teams"
 
 
-FutbolTeams::CLI.new.call
+CLI.new.run

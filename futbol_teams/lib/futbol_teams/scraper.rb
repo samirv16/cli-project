@@ -13,7 +13,9 @@ class Scraper
     team_info.collect do |element| 
       
         name = element.css("h2").text
+        Team.new(name)
     end
+  binding.pry
   end
   
   # def self.scrape_site
@@ -25,6 +27,5 @@ class Scraper
   #     description: element.css("p").text
   #   end
   # end
-  binding.pry
 
 end
