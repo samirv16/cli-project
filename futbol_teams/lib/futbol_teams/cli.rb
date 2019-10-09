@@ -6,12 +6,13 @@ class CLI
     self.greeting
     self.list_teams
     Scraper.scrape_team_names
+    list_msg
     loop do 
       user_input = menu
       if (user_input == "exit" || user_input.include?("n")) #&& user_input.to_i <= 0 && user_input.to_i > Team.all.length
+      goodbye
         return
       else
-        # self.error
         self.list_teams
         self.choose_team
       end
@@ -22,8 +23,11 @@ class CLI
     puts "\nWelcome, descriptions available for the following top 10 futbol teams of all time:\n"
   end
   
+  def list_msg
+    puts "\nWould you like to see the team list?\n"
+  end
+  
   def menu
-   puts "\nWould you like to see the team list?\n"
    input = gets.strip.downcase
    return input 
   end
@@ -39,7 +43,16 @@ class CLI
     puts "\nWhat team do you want to learn more about?\n"
       index = gets.strip.to_i - 1
       team = Team.all[index]
+      if input_valid?(index)
       self.description(team)
+      puts "\nType 'list' to see list again, or type 'exit'\n"
+      elsif !input_valid?(index)
+       error
+       elsif index == "list"
+       list_teams
+       elsif index == "exit"
+       goodbye
+     end
   end
   
   def description(team)
@@ -48,7 +61,7 @@ class CLI
   
   def input_valid?(input)
     input == input.to_i
-    input > 0 && inputs < Team.all.length
+    input >= 0 && input <= Team.all.length
   end
   
   def error 
