@@ -5,7 +5,7 @@ class CLI
   def run 
     greeting
     list_teams
-    Scraper.scrape_team_names
+    Scraper.scrape_team_info
     list_msg
     call
   end   

@@ -9,7 +9,7 @@ class Scraper
   
   
 
-  def self.scrape_team_names
+  def self.scrape_team_info
     doc = Nokogiri::HTML(open(BASE_URL))
     
     team_info = doc.css("#hub_resp_main .full.module.moduleText")[1..10].reverse
