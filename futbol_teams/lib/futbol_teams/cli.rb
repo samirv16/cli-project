@@ -3,15 +3,17 @@ require 'pry'
 class CLI
   
   def run 
-    greeting
+    self.greeting
+    self.list_teams
     Scraper.scrape_team_names
     loop do 
       user_input = menu
-      if user_input == "exit" || user_input.include?("n")
+      if (user_input == "exit" || user_input.include?("n")) #&& user_input.to_i <= 0 && user_input.to_i > Team.all.length
         return
-      else 
-        list_teams
-        choose_team
+      else
+        # self.error
+        self.list_teams
+        self.choose_team
       end
     end
   end   
@@ -21,20 +23,20 @@ class CLI
   end
   
   def menu
-   puts "\nenter number for which team youd like to see a description, type 'list' to see teams again, or type exit:\n"
+   puts "\nWould you like to see the team list?\n"
    input = gets.strip.downcase
    return input 
   end
   
   
   def list_teams
-    Team.all.each.with_index(1) do |team, i|
-      puts "\n#{i}. #{team.name}\n"
+    Team.all.each.with_index(1) do |team|
+      puts "\n #{team.name}\n"
     end
   end
   
   def choose_team
-    puts "\nWhat team do you want to learn more about\n"
+    puts "\nWhat team do you want to learn more about?\n"
       index = gets.strip.to_i - 1
       team = Team.all[index]
       self.description(team)
@@ -44,14 +46,18 @@ class CLI
     puts team.description
   end
   
-  # def input_valid?(input)
-  #   input == input.to_i
-  #   input > 0 && inputs < Team.all.length
-  # end
+  def input_valid?(input)
+    input == input.to_i
+    input > 0 && inputs < Team.all.length
+  end
   
-  # def goodbye
-  #   puts "\nBye Felicia!\n"
-  # end
+  def error 
+    puts "\nThats not an option, please try again:\n"
+  end 
+  
+  def goodbye
+    puts "\nBye Felicia!\n"
+  end
   
   
 end

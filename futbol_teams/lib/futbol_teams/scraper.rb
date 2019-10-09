@@ -12,7 +12,7 @@ class Scraper
   def self.scrape_team_names
     doc = Nokogiri::HTML(open(BASE_URL))
     
-    team_info = doc.css("#hub_resp_main .full.module.moduleText")[1..10]
+    team_info = doc.css("#hub_resp_main .full.module.moduleText")[1..10].reverse
     team_info.collect do |element| 
       
         name = element.css("h2").text
@@ -20,8 +20,5 @@ class Scraper
         Team.new(name, description)
     end
   end
-  # binding.pry
-  
-  
 
 end
