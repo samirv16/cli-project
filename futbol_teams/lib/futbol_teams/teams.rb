@@ -19,9 +19,4 @@ class Team
     @@all
   end
   
-  
-  
-    # binding.pry
-    
-    
 end 

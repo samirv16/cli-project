@@ -3,21 +3,26 @@ require 'pry'
 class CLI
   
   def run 
-    self.greeting
-    self.list_teams
+    greeting
+    list_teams
     Scraper.scrape_team_names
     list_msg
+    call
+  end   
+  
+  def call
     loop do 
       user_input = menu
-      if (user_input == "exit" || user_input.include?("n")) #&& user_input.to_i <= 0 && user_input.to_i > Team.all.length
+      if user_input == "exit" || user_input.include?("n") 
       goodbye
         return
       else
-        self.list_teams
-        self.choose_team
+        list_teams
+        choose_team
       end
     end
-  end   
+  end
+  
   
   def greeting
     puts "\nWelcome, descriptions available for the following top 10 futbol teams of all time:\n"
@@ -46,12 +51,15 @@ class CLI
       if input_valid?(index)
       self.description(team)
       puts "\nType 'list' to see list again, or type 'exit'\n"
-      elsif !input_valid?(index)
-       error
        elsif index == "list"
        list_teams
        elsif index == "exit"
        goodbye
+       return
+       elsif !input_valid?(index)
+       error
+       list_teams
+       choose_team
      end
   end
   
