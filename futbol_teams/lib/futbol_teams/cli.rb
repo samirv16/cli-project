@@ -1,10 +1,11 @@
 require 'pry'
+require 'colorize'
+
 
 class CLI
   
   def run 
     greeting
-    list_teams
     Scraper.scrape_team_info
     list_msg
     call
@@ -25,11 +26,11 @@ class CLI
   
   
   def greeting
-    puts "\nWelcome, descriptions available for the following top 10 futbol teams of all time:\n"
+    puts "\nWelcome, descriptions available for the following top 10 futbol teams of all time:\n".colorize(:ligh_blue)
   end
   
   def list_msg
-    puts "\nWould you like to see the team list?\n"
+    puts "\nWould you like to see the team list?\n".colorize(:light_blue)
   end
   
   def menu
@@ -40,17 +41,17 @@ class CLI
   
   def list_teams
     Team.all.each.with_index(1) do |team|
-      puts "\n #{team.name}\n"
+      puts "\n #{team.name}\n".colorize(:color => :white, :background => :red)
     end
   end
   
   def choose_team
-    puts "\nWhat team do you want to learn more about?\n"
+    puts "\nWhat team do you want to learn more about?\n".colorize(:light_blue)
       index = gets.strip.to_i - 1
       team = Team.all[index]
       if input_valid?(index)
       self.description(team)
-      puts "\nType 'list' to see list again, or type 'exit'\n"
+      puts "\nType 'list' to see list again, or type 'exit'\n".colorize(:light_blue)
        elsif index == "list"
        list_teams
        elsif index == "exit"
@@ -64,7 +65,7 @@ class CLI
   end
   
   def description(team)
-    puts team.description
+    puts team.description.colorize(:blue)
   end
   
   def input_valid?(input)
@@ -73,11 +74,11 @@ class CLI
   end
   
   def error 
-    puts "\nThats not an option, please try again:\n"
+    puts "\nThats not an option, please try again:\n".colorize(:red)
   end 
   
   def goodbye
-    puts "\nBye Felicia!\n"
+    puts "\nBye Felicia!\n".colorize(:red)
   end
   
   
